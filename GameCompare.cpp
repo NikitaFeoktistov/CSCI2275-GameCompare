@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
     string line;
     string name;
     string game;
-    while(getline(peopleFile,line)){
+    while(getline(peopleFile,line)){ //populating the LL
         stringstream personStream(line);
         getline(personStream,name,',');
         LLNode* newGame = new LLNode;
@@ -36,25 +36,15 @@ int main(int argc, char* argv[]){
     }
     cout<<endl;
 
-    // string menu = "==========Menu==========\n"
-    //               "1. Get a user's games\n"
-    //               "2. Add a game to a user\n"
-    //               "3. Remove a game from a user\n"
-    //               "4. Return users that play a game\n"
-    //               "5. Find similar games among users\n"
-    //               "6. Create priority queue\n"
-    //               "7. Quit\n";
-
-    // cout<<menu<<endl;
-    // cout<<"Select an option: ";
+    
     int choice;
-    int times = 0;
+    int times = 0; //for keeping track of the position in the queue
     Q gameQ;
     while(true){
         choice = gameList.input();
 
         switch(choice){
-            case 0:{
+            case 0:{ //Get a user's games
                 string getName;
                 cout<<"Enter user's name: ";
                 cin>>getName;
@@ -69,7 +59,7 @@ int main(int argc, char* argv[]){
                 cout<<endl;
                 break;
             }
-            case 1:{
+            case 1:{ //Add a game to a user
                 string getName;
                 string getGame;
                 cout<<"Enter user's name: ";
@@ -85,7 +75,7 @@ int main(int argc, char* argv[]){
                 gameList.addGame(getGame, getName);
                 break;
             }
-            case 2:{
+            case 2:{ //Remove a game from a user
                 string getName;
                 string getGame;
                 cout<<"Enter user's name: ";
@@ -101,7 +91,7 @@ int main(int argc, char* argv[]){
                 gameList.removeGame(getGame, getName);
                 break;
             }
-            case 3:{
+            case 3:{ //Return users that play a game
                 string getGame;
                 cout<<"Enter game: ";
                 cin>>getGame;
@@ -111,7 +101,7 @@ int main(int argc, char* argv[]){
                 gameList.printItem(getGame);
                 break;
             }
-            case 4:{
+            case 4:{ //Find common games
                 string getName;
                 vector<string> names;
                 cout<<"Enter user name (type done to finish): ";
@@ -145,15 +135,15 @@ int main(int argc, char* argv[]){
                 cout<<endl;
                 break;
             }
-            case 5:{
+            case 5:{ //Print the LL
                 gameList.printLL();
                 break;
             }
-            case 6:{
+            case 6:{ //Create a priority queue
                 gameList.organizeByAmount();
                 break;
             }
-            case 7:{
+            case 7:{ //Queue
                 LLNode* temp = gameList.root;
                 for(int i  = 0; i < times; i++){
                     temp = temp->next;
@@ -161,14 +151,14 @@ int main(int argc, char* argv[]){
                 gameQ.queue(temp->game.name);
                 break;
             }
-            case 8:{
+            case 8:{ //Dequeue
                 string returned = gameQ.dequeue();
                 if(returned != ""){
                     gameList.printItem(returned);
                 }
                 break;
             }
-            case 9:{
+            case 9:{ //Quit
                 gameList.writeToFile();
                 return 1;
             }
