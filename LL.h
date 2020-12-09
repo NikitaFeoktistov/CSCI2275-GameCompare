@@ -30,12 +30,12 @@ class LL{
         LLNode* search(string name); //finds the node of the game (completed)
         void printItem(string name); //prints out the people that play that game (completed)
         vector<string> findCommonGames(vector<string> names); //find the games these users have in common (users entered together, seperated by spaces) (completed)
+        LLNode* root;
     private:
         void removeFromLL(string name); //deletes a game with no people
         void addToLL(Game g); //adds a game to the LL
         void swap(string name); //swaps a game with its neighbor in the LL
         bool containsPerson(string name, vector<string> personVector); //checks if a vector contains a name (could use this for findCommonGames)
         vector<string> findAllUsers();
-        LLNode* root;
 
 };

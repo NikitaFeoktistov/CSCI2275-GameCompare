@@ -104,14 +104,16 @@ bool LL::containsPerson(string name, vector<string> personVector){
 
 int LL::input(){
     string menu = "==========Menu==========\n"
-                  "1. Get a user's games\n"
-                  "2. Add a game to a user\n"
-                  "3. Remove a game from a user\n"
-                  "4. Return users that play a game\n"
-                  "5. Find similar games among users\n"
-                  "6. Print the LL\n"
-                  "7. Create priority queue\n"
-                  "8. Quit\n";
+                  "0. Get a user's games\n"
+                  "1. Add a game to a user\n"
+                  "2. Remove a game from a user\n"
+                  "3. Return users that play a game\n"
+                  "4. Find similar games among users\n"
+                  "5. Print the LL\n"
+                  "6. Create priority queue\n"
+                  "7. Queue\n"
+                  "8. Dequeue\n"
+                  "9. Quit\n";
 
     cout<<menu<<endl;
     cout<<"Select an option: ";

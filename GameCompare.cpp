@@ -4,7 +4,7 @@
 #include <sstream>
 #include "LL.h"
 #include "utilities.h"
-#include "PQ.h"
+#include "Q.h"
 
 using namespace std;
 
@@ -48,12 +48,13 @@ int main(int argc, char* argv[]){
     // cout<<menu<<endl;
     // cout<<"Select an option: ";
     int choice;
-
+    int times = 0;
+    Q gameQ;
     while(true){
         choice = gameList.input();
 
         switch(choice){
-            case 1:{
+            case 0:{
                 string getName;
                 cout<<"Enter user's name: ";
                 cin>>getName;
@@ -68,7 +69,7 @@ int main(int argc, char* argv[]){
                 cout<<endl;
                 break;
             }
-            case 2:{
+            case 1:{
                 string getName;
                 string getGame;
                 cout<<"Enter user's name: ";
@@ -84,7 +85,7 @@ int main(int argc, char* argv[]){
                 gameList.addGame(getGame, getName);
                 break;
             }
-            case 3:{
+            case 2:{
                 string getName;
                 string getGame;
                 cout<<"Enter user's name: ";
@@ -100,7 +101,7 @@ int main(int argc, char* argv[]){
                 gameList.removeGame(getGame, getName);
                 break;
             }
-            case 4:{
+            case 3:{
                 string getGame;
                 cout<<"Enter game: ";
                 cin>>getGame;
@@ -110,7 +111,7 @@ int main(int argc, char* argv[]){
                 gameList.printItem(getGame);
                 break;
             }
-            case 5:{
+            case 4:{
                 string getName;
                 vector<string> names;
                 cout<<"Enter user name (type done to finish): ";
@@ -144,16 +145,30 @@ int main(int argc, char* argv[]){
                 cout<<endl;
                 break;
             }
-            case 6:{
+            case 5:{
                 gameList.printLL();
                 break;
             }
-            case 7:{
+            case 6:{
                 gameList.organizeByAmount();
-                PQ gamePQ;
+                break;
+            }
+            case 7:{
+                LLNode* temp = gameList.root;
+                for(int i  = 0; i < times; i++){
+                    temp = temp->next;
+                }
+                gameQ.queue(temp->game.name);
                 break;
             }
             case 8:{
+                string returned = gameQ.dequeue();
+                if(returned != ""){
+                    gameList.printItem(returned);
+                }
+                break;
+            }
+            case 9:{
                 gameList.writeToFile();
                 return 1;
             }
